@@ -22,9 +22,9 @@ public class CarService {
         carList.add(car3);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void showCar(){
-        carList.forEach(System.out::println);
+
+    public List<Car> getCars(){
+        return carList;
     }
 
 
