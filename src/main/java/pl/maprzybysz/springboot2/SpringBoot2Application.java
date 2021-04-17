@@ -12,9 +12,6 @@ public class SpringBoot2Application {
         SpringApplication.run(SpringBoot2Application.class, args);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void get(){
-        System.out.println("Hello world");
-    }
+
 
 }
