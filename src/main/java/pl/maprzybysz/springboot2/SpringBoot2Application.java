@@ -14,15 +14,4 @@ public class SpringBoot2Application {
         SpringApplication.run(SpringBoot2Application.class, args);
     }
 
-
-    @Bean
-    public ReloadableResourceBundleMessageSource messageSource(){
-        ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
-        source.setBasename("classpath:i18n/messages");
-        source.setDefaultEncoding("UTF-8");
-        return source;
-    }
-
-
-
 }
