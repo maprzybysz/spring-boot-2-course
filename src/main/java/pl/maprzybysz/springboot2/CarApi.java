@@ -1,5 +1,8 @@
 package pl.maprzybysz.springboot2;
 
+
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping(value = "/cars", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 public class CarApi {
     private List<Car> cars;
 
@@ -24,15 +28,21 @@ public class CarApi {
         cars.add(new Car(4L, "AUDI", "RS4", "GREEN"));
     }
 
-    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping
     public ResponseEntity<List<Car>> getCars(){
-        return new ResponseEntity(cars, HttpStatus.OK);
+        CollectionModel<Car> entityCars = CollectionModel.of(cars);
+        entityCars.forEach(car -> car.addIf(!car.hasLinks(),
+                ()->linkTo(methodOn(CarApi.class).getCarById(car.getId())).withSelfRel()));
+        return new ResponseEntity(entityCars, HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable Long id){
         Optional<Car> findCar = cars.stream().filter(car -> car.getId() == id).findFirst();
+        findCar.get().add();
+        EntityModel<Car> entityModel = EntityModel.of(findCar.get(),
+                linkTo(methodOn(CarApi.class).getCarById(id)).withSelfRel());
         if(findCar.isPresent()){
-            return new ResponseEntity<>(findCar.get(), HttpStatus.OK);
+            return new ResponseEntity(entityModel, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
