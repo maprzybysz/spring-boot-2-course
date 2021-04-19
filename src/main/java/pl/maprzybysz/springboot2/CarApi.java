@@ -1,6 +1,7 @@
 package pl.maprzybysz.springboot2;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class CarApi {
         cars.add(new Car(4L, "AUDI", "RS4", "GREEN"));
     }
 
-    @GetMapping
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<List<Car>> getCars(){
         return new ResponseEntity(cars, HttpStatus.OK);
     }
