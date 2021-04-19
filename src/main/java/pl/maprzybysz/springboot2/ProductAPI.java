@@ -6,19 +6,39 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/products")
 public class ProductAPI {
 
-    @GetMapping//("/products")
-    public String getProducts(){
-        return "Hello World with GET";
+
+        //Parameter /products?name="name"&surname="surname"
+//    @GetMapping
+//    public String getProducts(@RequestParam String name,
+//                              @RequestParam(required = false, defaultValue = "Kowalski") String surname){
+//        return "Hello "+name+" "+surname;
+//    }
+        //Path /products/name
+//    @GetMapping("/{name}")
+//    public String getProducts(@PathVariable String name){
+//        return "Hello "+name;
+//    }
+    //Header
+//    @GetMapping
+//    public String getProducts(@RequestHeader String name){
+//        return "Hello "+name;
+//    }
+
+    //Body
+    @GetMapping
+    public String getProducts(@RequestBody String name){
+        return "Hello "+name;
     }
-    @PostMapping//("/products")
+
+    @PostMapping
     public String addProduct(){
         return "Hello World with POST";
     }
-    @PutMapping//("/products")
+    @PutMapping
     public String modifyProduct(){
         return "Hello World with PUT";
     }
-    @DeleteMapping//("/products")
+    @DeleteMapping
     public String deleteProduct(){
         return "Hello World with DELETE";
     }
