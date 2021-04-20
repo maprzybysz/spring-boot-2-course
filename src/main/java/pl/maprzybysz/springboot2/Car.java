@@ -3,10 +3,22 @@ package pl.maprzybysz.springboot2;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Car extends RepresentationModel<Car> {
+    @Min(1)
     private Long id;
+    @NotNull(message = "mark cannot be null")
+    @Size(min = 2)
     private String mark;
+    @Size(min = 2)
+    @NotNull(message = "model cannot be null")
+    @Size(min = 2)
     private String model;
+    @NotNull(message = "color cannot be null")
+    @Size(min = 2)
     private String color;
 
     public Car() {
