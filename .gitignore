@@ -34,3 +34,6 @@ build/
 /.mvn/
 /mvnw.cmd
 /mvnw
+/package-lock.json
+/webpack.config.js
+/webpack.generated.js
