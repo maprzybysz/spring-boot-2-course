@@ -53,6 +53,16 @@ public class AnimalFact {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    private String src;
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
     @JsonProperty("status")
     public Status getStatus() {
         return status;
@@ -188,6 +198,7 @@ public class AnimalFact {
                 ", v=" + v +
                 ", used=" + used +
                 ", additionalProperties=" + additionalProperties +
+                ", src='" + src + '\'' +
                 '}';
     }
 }
