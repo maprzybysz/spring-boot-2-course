@@ -1,13 +1,14 @@
-package pl.maprzybysz.springboot2.controller;
+package pl.maprzybysz.springboot2.client;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 import pl.maprzybysz.springboot2.model.AnimalFact;
 
-@Controller
-public class CatController {
 
-    public CatController() {
+@Controller
+public class CatClient {
+
+    public CatClient() {
 
         RestTemplate restTemplate = new RestTemplate();
 
