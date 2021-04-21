@@ -5,20 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<tr th:each="car, iStat:${cars}">
-    <td th:text="${iStat.index+1}"></td>
-    <td th:text="${car.getMark()}"/>
-    <td th:text="${car.getModel()}"/>
-    <td><a th:href="@{delete-car/{id}(id=${iStat.index})}">Delete</a></td>
-    <td><a th:href="@{edit-car/{id}(id=${iStat.index})}">Edit</a></td>
-    <p>------------------------------</p>
-</tr>
+<h1>CAR DEALERSHIP</h1>
+<h2>CAR WITH ID <span th:text="${id}"></span></h2>
+<h3>
+    <span th:text="${findCar.getMark()}"></span>
+    <span th:text="${findCar.getModel()}"></span>
+    <a th:href="@{'/delete-car/' + ${id}}">Delete</a>
+    <a th:href="@{'/edit-car/' + ${id}}">Edit</a>
+</h3>
 
-<form th:action="@{/add-car}" th:object="${newCar}" method="post">
-    <p>Mark: <input type="text" th:field="*{mark}"></p>
-    <p>Model: <input type="text" th:field="*{model}"></p>
-    <p><input type="submit" value="add new car"></p>
-</form>
+<a href="/">BACK</a>
+
+
 
 
 </body>

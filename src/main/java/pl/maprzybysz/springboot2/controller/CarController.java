@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.maprzybysz.springboot2.model.Car;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -27,22 +26,34 @@ public class CarController {
         cars.add(car4);
     }
 
-    @GetMapping("/car")
-    public String get(Model model){
+    @GetMapping("/cars")
+    public String getCars(Model model){
         model.addAttribute("cars", cars);
-        model.addAttribute("newCar", new Car());
+        return "cars";
+    }
+    @GetMapping("/car")
+    public String getCars(@RequestParam int id, Model model){
+        Car car = cars.get(id);
+        model.addAttribute("findCar", car);
+        model.addAttribute("id", id);
         return "car";
+    }
+    @GetMapping("/car-add")
+    public String getAddView(Model model){
+        model.addAttribute("newCar", new Car());
+        return "car-add";
     }
 
     @PostMapping("/add-car")
     public String addCar(@ModelAttribute Car car){
         cars.add(car);
-        return "redirect:/car";
+        return "redirect:/cars";
     }
+
     @GetMapping("/delete-car/{id}")
     public String deleteCar(@PathVariable int id){
         cars.remove(id);
-        return "redirect:/car";
+        return "redirect:/cars";
     }
     @GetMapping("/edit-car/{id}")
     public String showUpdateForm(@PathVariable int id, Model model){
@@ -51,11 +62,11 @@ public class CarController {
         model.addAttribute("id", id);
         return "car-update";
     }
-    @PostMapping("/update-car")
-    public String updateCar(@RequestParam int id, @ModelAttribute Car car){
+    @PostMapping("/update-car/{id}")
+    public String updateCar(@PathVariable int id, @ModelAttribute Car car){
         Car editCar = cars.get(id);
         editCar.setMark(car.getMark());
         editCar.setModel(car.getModel());
-        return "redirect:/car";
+        return "redirect:/cars";
     }
 }
