@@ -9,6 +9,7 @@ public class Hello {
 
 
     @EventListener(ApplicationReadyEvent.class)
+    @HelloAspectAnnotation
     public String sayHello(){
         System.out.println("Hello");
         return "Hello";

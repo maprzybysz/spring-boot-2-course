@@ -11,20 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class HelloAspect {
 
-    @Before("execution(String pl.maprzybysz.springboot2.Hello.sayHello())")
-    private void beforeHello(){
-        System.out.println("Before hello");
-    }
 
-    @Around("execution(String pl.maprzybysz.springboot2.Hello.sayHello())")
+    @Around("@annotation(HelloAspectAnnotation)")
     private void aroundHello(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("Around hello");
         joinPoint.proceed();
     }
 
-    @After("execution(String pl.maprzybysz.springboot2.Hello.sayHello())")
-    private void afterHello() throws Throwable {
-        System.out.println("After hello");
 
-    }
 }
