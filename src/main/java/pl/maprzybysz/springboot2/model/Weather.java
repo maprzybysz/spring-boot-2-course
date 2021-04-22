@@ -1,4 +1,3 @@
-
 package pl.maprzybysz.springboot2.model;
 
 import java.util.HashMap;
@@ -13,37 +12,50 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "verified",
-    "sentCount"
+        "request",
+        "location",
+        "current"
 })
 @Generated("jsonschema2pojo")
-public class Status {
+public class Weather {
 
-    @JsonProperty("verified")
-    private Object verified;
-    @JsonProperty("sentCount")
-    private Integer sentCount;
+    @JsonProperty("request")
+    private Request request;
+    @JsonProperty("location")
+    private Location location;
+    @JsonProperty("current")
+    private Current current;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("verified")
-    public Object getVerified() {
-        return verified;
+    @JsonProperty("request")
+    public Request getRequest() {
+        return request;
     }
 
-    @JsonProperty("verified")
-    public void setVerified(Object verified) {
-        this.verified = verified;
+    @JsonProperty("request")
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
-    @JsonProperty("sentCount")
-    public Integer getSentCount() {
-        return sentCount;
+    @JsonProperty("location")
+    public Location getLocation() {
+        return location;
     }
 
-    @JsonProperty("sentCount")
-    public void setSentCount(Integer sentCount) {
-        this.sentCount = sentCount;
+    @JsonProperty("location")
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    @JsonProperty("current")
+    public Current getCurrent() {
+        return current;
+    }
+
+    @JsonProperty("current")
+    public void setCurrent(Current current) {
+        this.current = current;
     }
 
     @JsonAnyGetter
@@ -58,9 +70,10 @@ public class Status {
 
     @Override
     public String toString() {
-        return "Status{" +
-                "verified=" + verified +
-                ", sentCount=" + sentCount +
+        return "Weather{" +
+                "request=" + request +
+                ", location=" + location +
+                ", current=" + current +
                 ", additionalProperties=" + additionalProperties +
                 '}';
     }

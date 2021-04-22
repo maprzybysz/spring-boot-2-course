@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper{
+            width: 600px;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .degree{
+            font-size: 32px;
+        }
+
+    </style>
+</head>
+<body class="wrapper">
+
+    <img th:src="${weather.getCurrent().getWeatherIcons().get(0)}" th:width="100px" th:height="100px"/>
+    <h1 th:text="${weather.getCurrent().getTemperature()}" class="degree"></h1>
+    <h1 th:text="${weather.getRequest().getQuery()}">, </h1>
+    <h1 th:text="${weather.getLocation().getLocaltime()}"></h1>
+
+</body>
+</html>
