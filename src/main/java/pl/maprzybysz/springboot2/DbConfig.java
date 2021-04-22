@@ -20,18 +20,6 @@ public class DbConfig {
         this.dataSource = dataSource;
     }
 
-    //    @Bean
-//    public DataSource getDataSource(){
-//        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-//        dataSourceBuilder.url("jdbc:mysql://localhost:3306/ksb2");
-//        dataSourceBuilder.username("root");
-//        dataSourceBuilder.password("zaq1@WSX");
-//        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-//        return dataSourceBuilder.build();
-//    }
-
-
-
     @Bean
     public JdbcTemplate getJdbcTemplate(){
         return new JdbcTemplate(dataSource);
