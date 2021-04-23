@@ -25,12 +25,6 @@ public class DbConfig {
         return new JdbcTemplate(dataSource);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void init(){
-//        String sql = "CREATE TABLE videos(video_id int, title varchar(255), url varchar(255), PRIMARY KEY (video_id))";
-        String sql1 = "INSERT videos VALUES (3, 'dsa', 123)";
-//        getJdbcTemplate().update(sql);
-        getJdbcTemplate().update(sql1);
-    }
+
 
 }

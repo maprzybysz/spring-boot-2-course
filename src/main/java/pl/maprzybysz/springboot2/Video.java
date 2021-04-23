@@ -7,6 +7,14 @@ public class Video {
   private String title;
   private String url;
 
+  public Video(long videoId, String title, String url) {
+    this.videoId = videoId;
+    this.title = title;
+    this.url = url;
+  }
+
+  public Video() {
+  }
 
   public long getVideoId() {
     return videoId;
