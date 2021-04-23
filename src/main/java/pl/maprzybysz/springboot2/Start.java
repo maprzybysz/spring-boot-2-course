@@ -16,7 +16,8 @@ public class Start {
         this.videoDao = videoDao;
 
 
-        videoDao.findAll().forEach(System.out::println);
+        videoDao.updateVideo(new Video(1L, "New video", "New url"));
+
     }
 
 
