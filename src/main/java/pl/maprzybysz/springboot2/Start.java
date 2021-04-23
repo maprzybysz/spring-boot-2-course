@@ -14,7 +14,9 @@ public class Start {
     @Autowired
     public Start(VideoDao videoDao) {
         this.videoDao = videoDao;
-        videoDao.saveVideo(new Video(111L, "ABC123", "URL1.URL"));
+
+
+        videoDao.findAll().forEach(System.out::println);
     }
 
 
