@@ -16,7 +16,7 @@ public class Start {
         this.videoDao = videoDao;
 
 
-        videoDao.deleteVideo(5L);
+        System.out.println(videoDao.findById(111l));
 
     }
 
