@@ -13,6 +13,7 @@ public class Car {
     @Column(name="car_mark")
     private String mark;
     private String model;
+    @Enumerated(EnumType.STRING)
     private Color color;
 
     public Car(String mark, String model, Color color) {
