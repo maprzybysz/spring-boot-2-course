@@ -46,7 +46,9 @@ public class VideoDaoImpl implements VideoDao{
     }
 
     @Override
-    public void deleteVideo() {
+    public void deleteVideo(long id) {
+        String sql = "DELETE FROM videos WHERE video_id = ?";
+        jdbcTemplate.update(sql, id);
 
     }
 }

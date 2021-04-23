@@ -16,7 +16,7 @@ public class Start {
         this.videoDao = videoDao;
 
 
-        videoDao.updateVideo(new Video(1L, "New video", "New url"));
+        videoDao.deleteVideo(5L);
 
     }
 
