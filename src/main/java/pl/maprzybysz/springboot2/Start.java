@@ -19,8 +19,15 @@ public class Start {
     public void init(){
         Car car1 = new Car("BMW", "M3", Color.BLACK);
         Car car2 = new Car("BMW", "M2", Color.BLACK);
+        Car car3 = new Car("BMW", "M4", Color.RED);
+        Car car4 = new Car("AUDI", "RS4", Color.BLACK);
 
         carRepo.save(car1);
         carRepo.save(car2);
+        carRepo.save(car3);
+        carRepo.save(car4);
+
+        carRepo.findCarsByColor(Color.BLACK).forEach(System.out::println);
+        carRepo.findCarsByColorAndMark(Color.BLACK, "AUDI").forEach(System.out::println);
     }
 }
