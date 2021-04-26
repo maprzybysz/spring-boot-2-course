@@ -22,7 +22,9 @@ public class Start {
         toyRepo.save(toy1);
         toyRepo.save(toy2);
 
-
+        System.out.println(toyRepo.findById("6086d23479750760f8314b4e").get());
+//        toyRepo.findAll().forEach(System.out::println);
+        toyRepo.delete(toy1);
 
     }
 }
