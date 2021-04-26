@@ -29,5 +29,6 @@ public class Start {
 
         carRepo.findCarsByColor(Color.BLACK).forEach(System.out::println);
         carRepo.findCarsByColorAndMark(Color.BLACK, "AUDI").forEach(System.out::println);
+        carRepo.findCarsByModel("RS4").forEach(System.out::println);
     }
 }
