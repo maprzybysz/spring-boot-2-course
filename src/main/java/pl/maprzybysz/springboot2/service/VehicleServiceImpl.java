@@ -13,12 +13,14 @@ import pl.maprzybysz.springboot2.repository.VehicleRepository;
 @Service
 public class VehicleServiceImpl implements VehicleService{
 
-    private final VehicleRepository vehicleRepository;
+
+    private VehicleRepository vehicleRepository;
 
     @Autowired
     public VehicleServiceImpl(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
+
 
     @Override
     public List<Vehicle> findAllVehicles() {
@@ -35,8 +37,9 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public List<Vehicle> findAllVehiclesByColor(String color) {
-        Iterable<Vehicle> vehicles = vehicleRepository.findAllByColor(color);
-        return StreamSupport.stream(vehicles.spliterator(), true)
+        Iterable<Vehicle> all = vehicleRepository.findAll();
+        return StreamSupport.stream(all.spliterator(), true)
+                .filter(item -> item.getColor().equals(color))
                 .collect(Collectors.toList());
     }
 
