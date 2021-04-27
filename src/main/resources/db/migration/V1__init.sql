@@ -1,12 +1,8 @@
-CREATE TABLE Categories(
-                           CategoryID INT PRIMARY KEY,
-                           CategoryName varchar(25)
-);
+DROP TABLE IF EXISTS vehicle;
 
-CREATE TABLE Products(
-                         ProductID INT PRIMARY KEY,
-                         ProductName VARCHAR(50),
-                         Quantity INT,
-                         CategoryID INT,
-                         CONSTRAINT tb_fk FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+CREATE TABLE vehicle (
+                         id LONG AUTO_INCREMENT PRIMARY KEY,
+                         brand VARCHAR(250) NOT NULL,
+                         model VARCHAR(250) NOT NULL,
+                         color VARCHAR(250) NOT NULL
 );
