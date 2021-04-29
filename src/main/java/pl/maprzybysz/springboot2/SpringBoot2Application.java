@@ -17,19 +17,6 @@ public class SpringBoot2Application {
     }
 
 
-    @Bean
-    public ModelMapper getModelMapper(){
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<Order, OrderDTO>() {
-            @Override
-            protected void configure() {
-                map().setCity(source.getShippingAddress().getCity());
-                map().setStreet(source.getShippingAddress().getStreet());
-                map().setName(source.getCustomer().getName());
-                map().setLocalDate(LocalDate.now());
-            }
-        });
-        return modelMapper;
-    }
+
 
 }
